@@ -127,14 +127,22 @@ int Bajar(int pulsador, int estadoAntBoton)
   int cambio = !estadoBoton && estadoAntBoton;
   if (cambio) //Si presioné, entonces ejecutame.
   {
-    unidades--;
-    if (unidades < 0)
+    // Añade una verificación aquí para ver si ambas variables son 0
+    if (unidades == 0 && decenas == 0) 
     {
-      unidades = 9;
-      decenas--;
-      if (decenas < 0)
+      // No hacer nada si ambas son 0
+    }
+    else 
+    {
+      unidades--;
+      if (unidades < 0)
       {
-        decenas = 0;
+        unidades = 9;
+        decenas--;
+        if (decenas < 0)
+        {
+          decenas = 0;
+        }
       }
     }
   }

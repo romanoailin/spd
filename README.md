@@ -7,7 +7,7 @@
 ## Proyecto: contador de 0 a 99
 ![img tinkercad](./img/contador_tinkercad.png)
 
-En este proyecto se diseñó un contador de 0 a 99 en una placa de arduino con dos display de 7 segmentos multiplexados. El mismo contiene tres botones. El primero aumenta el contador en una unidad, el segundo disminuye la cuenta en una unidad y el tercero resetea el contador en cero. 
+En este proyecto se diseñó un contador de 0 a 99 en una placa de arduino con dos display de 7 segmentos cátodo común multiplexados. El mismo contiene tres botones. El primero aumenta el contador en una unidad, el segundo disminuye la cuenta en una unidad y el tercero resetea el contador en cero. 
 
 ## Funciones:
 
