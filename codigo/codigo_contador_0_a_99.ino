@@ -125,9 +125,8 @@ int Bajar(int pulsador, int estadoAntBoton)
 {
   int estadoBoton = digitalRead(pulsador);
   int cambio = !estadoBoton && estadoAntBoton;
-  if (cambio) //Si presioné, entonces ejecutame.
+  if (cambio) 
   {
-    // Añade una verificación aquí para ver si ambas variables son 0
     if (unidades == 0 && decenas == 0) 
     {
       // No hacer nada si ambas son 0
