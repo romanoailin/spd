@@ -7,7 +7,7 @@
 ## Proyecto: contador de 0 a 99
 ![img tinkercad](./img/contador_tinkercad.png)
 
-En este proyecto se diseñó un contador de 0 a 99 en una placa de arduino con dos display de 7 segmentos cátodo común multiplexados. El mismo contiene tres botones. El primero aumenta el contador en una unidad, el segundo disminuye la cuenta en una unidad y el tercero resetea el contador en cero. 
+En este proyecto se diseñó un contador de 0 a 99 en una placa de arduino con dos display de 7 segmentos cátodo común multiplexados. El mismo contiene tres botones. El primero aumenta el contador en una unidad, el segundo disminuye la cuenta en una unidad y el tercero resetea el contador en cero. Si el display llega a 99, el contador se resetea a 00.
 
 ## Funciones:
 
@@ -29,7 +29,7 @@ En este proyecto se diseñó un contador de 0 a 99 en una placa de arduino con d
 
 ### Bajar(int pulsador, int estadoAntBoton)
 
-- Esta función disminuye el valor de las unidades o decenas cuando se presiona el botón de bajar. Si el valor de las unidades llega a 0, se establece en 9 y se decrementa el valor de las decenas.
+- Esta función disminuye el valor de las unidades o decenas cuando se presiona el botón de bajar. Si el valor de las unidades llega a 0, se establece en 9 y se decrementa el valor de las decenas. Si el contador se encuentra en 00 y se presiona el botón de bajar, no hace nada.
 
 ### Resetear(int pulsador, int estadoAntBoton)
 
