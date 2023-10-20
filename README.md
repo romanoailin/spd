@@ -14,6 +14,7 @@ Posee un switch deslizante que, si se encuentra a la izquierda, aumenta o dismin
 
 
 Agregamos un motor que gira hacia adelante o atrás dependiendo el modo en que se encuentre el contador y un sensor de fuerza que, solo en el caso de llegar a los 10 N, resetea el contador. 
+Se agregó como tercera parte un fotodiodo que en caso de que el sensor llegue al máximo, deja el contador en 99.
 
 ## Funciones:
 
@@ -27,6 +28,9 @@ Llama a las funciones para **leer sensor de fuerza, manipular botones y encender
 
 ### leeSensor(int sensor):
 Lee el valor del sensor de fuerza y, si alcanza el valor máximo, resetea el contador.
+
+### leeFotodiodo(int iluminacion):
+Lee el valor del fotodiodo y, si alcanza el valor máximo, establece el contador en 99.
 
 ### ManipularBotones():
 Verifica el estado de los pulsadores y el slide switch.
