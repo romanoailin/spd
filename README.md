@@ -3,58 +3,75 @@
 ## Integrantes: 
 - Patricio Pereyra
 - Ailin Romano
+- Fernanda Vasconnnet
 
 ## Proyecto: contador de 0 a 99
-![img tinkercad](./img/contador_tinkercad.png)
+![img tinkercad](./img/contador_primos.png)
 
-En este proyecto se diseñó un contador de 0 a 99 en una placa de arduino con dos display de 7 segmentos cátodo común multiplexados. El mismo contiene tres botones. El primero aumenta el contador en una unidad, el segundo disminuye la cuenta en una unidad y el tercero resetea el contador en cero. Si el display llega a 99, el contador se resetea a 00.
+En este proyecto se diseñó un contador de 0 a 99 en una placa de arduino con dos display de 7 segmentos cátodo común multiplexados. El mismo contiene dos botones. El primero aumenta el contador, el segundo lo disminuye. 
+
+Posee un switch deslizante que, si se encuentra a la izquierda, aumenta o disminuye la cuenta a través de los números primos; si se encuentra a la derecha, el contador se mueve de uno en uno a través de los números del 0 al 99. 
+
+
+Agregamos un motor que gira hacia adelante o atrás dependiendo el modo en que se encuentre el contador y un sensor de fuerza que, solo en el caso de llegar a los 10 N, resetea el contador. 
 
 ## Funciones:
 
-### setup()
+### setup():
+Configura los pines como entrada o salida según corresponda.
+Configura los pulsadores, el slide switch y el sensor de fuerza como entrada con resistencia de pull-up.
 
-- Esta función se ejecuta una vez al inicio del programa. Configura los pines utilizados en el circuito, tanto para la salida de datos a los displays como para la entrada de los pulsadores. Los pulsadores se configuran con resistencias pull-up internas para su detección.
+### loop():
+Ejecuta el **bucle principal** del programa.
+Llama a las funciones para **leer sensor de fuerza, manipular botones y encender displays**
 
-### loop()
+### leeSensor(int sensor):
+Lee el valor del sensor de fuerza y, si alcanza el valor máximo, resetea el contador.
 
-- Función principal que se ejecuta en un bucle continuo después de la configuración inicial. Controla la lógica principal del programa, que incluye alternar entre la visualización de unidades y decenas en los displays y gestionar los pulsadores para aumentar, disminuir o restablecer los valores mostrados en los displays.
+### ManipularBotones():
+Verifica el estado de los pulsadores y el slide switch.
+Llama a la función Subir() y Bajar() para controlar el contador.
+Llama a la función deslizante() para controlar el sentido del motor.
 
-### ManipularBotones()
+### deslizante(int izquierdo, int derecho):
+Lee el estado del slide switch para determinar si el contador avanza en números primos o de uno en uno.
+Controla la dirección del motor en consecuencia.
 
-- Esta función verifica el estado de los pulsadores y actualiza las variables que rastrean su estado anterior. Se utiliza para detectar cuándo se presionan los pulsadores de subir, bajar y restablecer.
+### Subir(int pulsador, int estadoAntBoton, bool modoPrimo):
+Aumenta el valor de las unidades o decenas cuando el pulsador es presionado.
+Controla si se mueve a través de números primos o de todos los números del 0 al 99.
 
-### Subir(int pulsador, int estadoAntBoton)
+### Bajar(int pulsador, int estadoAntBoton, bool modoPrimo):
+Disminuye el valor de las unidades o decenas cuando el pulsador es presionado.
+Controla si se mueve a través de números primos o de todos los números del 0 al 99.
 
-- Esta función se encarga de incrementar el valor de las unidades o decenas cuando se presiona el botón de subir. Si el valor de las unidades llega a 10, se reinicia a cero y se incrementa el valor de las decenas.
+### EsPrimo(int num):
+Determina si un número pasado como parámetro es primo o no.
+Devuelve true si el número es primo y false si no lo es.
 
-### Bajar(int pulsador, int estadoAntBoton)
+### PrenderDisplay(int display, int numero):
+Enciende un display específico (UNIDADES o DECENAS) y muestra un número en él.
+Llama a la función MostrarNumero() para activar los segmentos correspondientes.
 
-- Esta función disminuye el valor de las unidades o decenas cuando se presiona el botón de bajar. Si el valor de las unidades llega a 0, se establece en 9 y se decrementa el valor de las decenas. Si el contador se encuentra en 00 y se presiona el botón de bajar, no hace nada.
+### MostrarNumero(int numero):
 
-### Resetear(int pulsador, int estadoAntBoton)
+Enciende los segmentos del display según el número pasado como parámetro.
+Apaga previamente todos los segmentos para evitar superposiciones.
 
-- Cuando se presiona el botón de restablecer, esta función restablece los valores de unidades y decenas a cero.
+### ApagarDisplay():
 
-### PrenderDisplay(int display, int numero)
+Apaga todos los segmentos del display para preparar el siguiente número a mostrar.
 
-- Esta función se utiliza para encender y apagar los displays según sea necesario. Controla la lógica de la multiplexación de los displays, asegurándose de que solo uno esté encendido en un momento dado.
+### Resetear():
 
-### MostrarNumero(int numero)
-
-- Esta función se utiliza para mostrar un número en los displays LED de 7 segmentos. Configura los pines correspondientes a los segmentos A, B, C, D, E, F y G para mostrar el número proporcionado como parámetro.
-
-### ApagarDisplay()
-
-- Esta función apaga todos los segmentos de los displays, asegurando que no se muestre ningún número en ellos.
-
-Todas estas funciones trabajan juntas para crear un sistema que permita al usuario incrementar, disminuir y restablecer valores en los displays LED de 7 segmentos utilizando pulsadores.
+Restablece el contador a 00 cuando se detecta la máxima fuerza en el sensor.
 
 
 ## Ver el proyecto
-[En este link](https://www.tinkercad.com/things/2lvHUsaZFAT?sharecode=v3u23u9ZqbUqLvU3CQkFhtTGDUxi--_OwQYGhyNlhBg) está el proyecto en la plataforma Tinkercad.
+[En este link](https://www.tinkercad.com/things/0jIUsnorCgD) está el proyecto en la plataforma Tinkercad.
 
 ## Demo en video
-Si querés ver la demo de nuestro proyecto, [podés hacerlo acá](https://www.loom.com/share/2a0bec58491e4c078003808fe90af378?sid=bac2e6a6-ef8d-4bc9-b516-eb9dc1063fea).
+Grabamos un video en donde mostramos como funciona nuestro proyecto, [podés verlo acá](https://drive.google.com/file/d/10BdWdoWMyWS7gipp0D5-6EOVKSMFKBiT/view?usp=share_link).
 
 
 
