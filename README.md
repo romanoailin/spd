@@ -6,7 +6,7 @@
 - Fernanda Vasconnnet
 
 ## Proyecto: contador de 0 a 99
-![img tinkercad](./img/contador_primos.png)
+![img tinkercad](./img/Contador_con_fotodiodo.png)
 
 En este proyecto se diseñó un contador de 0 a 99 en una placa de arduino con dos display de 7 segmentos cátodo común multiplexados. El mismo contiene dos botones. El primero aumenta el contador, el segundo lo disminuye. 
 
